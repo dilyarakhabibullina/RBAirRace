@@ -1,8 +1,10 @@
 package ru.itpark.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+        import lombok.Data;
+        import lombok.NoArgsConstructor;
+
+import java.sql.Date;
 
 @Data
 @NoArgsConstructor
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Pilot {
     private int id;
     private String pilotname;
-    private int birthdate;
+    private Date birthdate;
     private int experience;
     private String aircraft;
 }

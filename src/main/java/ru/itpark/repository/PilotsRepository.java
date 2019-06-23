@@ -15,11 +15,11 @@ public class PilotsRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public List<Pilot> findAll() {
-        return jdbcTemplate.query("SELECT id, pilotname, birthdate, experience, aircraft FROM pilotes",
+        return jdbcTemplate.query("SELECT id, pilotname, birthdate, experience, aircraft FROM pilots",
                 (rs, i) -> new Pilot(
                         rs.getInt("id"),
                         rs.getString("pilotname"),
-                        rs.getInt("birthdate"),
+                        rs.getDate("birthdate"),
                         rs.getInt("experience"),
                         rs.getString("aircraft")
                 ));
@@ -31,23 +31,23 @@ public class PilotsRepository {
                 (rs, i) -> new Pilot(
                         rs.getInt("id"),
                         rs.getString("pilotname"),
-                        rs.getInt("birthdate"),
+                        rs.getDate ("birthdate"),
                         rs.getInt("experience"),
                         rs.getString("aircraft")
                 ));
     }
 
     public void removeById(int id) {
-        jdbcTemplate.update("DELETE FROM pilotes WHERE id = ?",
+        jdbcTemplate.update("DELETE FROM pilots WHERE id = ?",
                 id);
     }
 
     public void save(Pilot pilot) {
         if (pilot.getId() == 0) {
-            jdbcTemplate.update("INSERT INTO pilotes (id, pilotname, birthdate, experience, aircraft)  VALUES (?,?,?,?,?)",
+            jdbcTemplate.update("INSERT INTO pilots (id, pilotname, birthdate, experience, aircraft)  VALUES (?,?,?,?,?)",
                     pilot.getId(), pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft());
         } else {
-            jdbcTemplate.update("UPDATE pilotes SET pilotname = ?, birthdate = ?, experience = ?, aircraft = ? WHERE id = ?", pilot.getId(), pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft());
+            jdbcTemplate.update("UPDATE pilots SET pilotname = ?, birthdate = ?, experience = ?, aircraft = ? WHERE id = ?", pilot.getId(), pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft());
 
         }
 

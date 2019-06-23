@@ -1,4 +1,4 @@
-package ru.itpark.rbairrace;
+package ru.itpark;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

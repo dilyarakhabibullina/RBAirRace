@@ -4,6 +4,7 @@ VALUES (1, 'Martin Sonka', '1973-08-09', 25, 'junkers-87'),
        (3, 'Pete McLeod', '1979-09-08', 20, 'EDGE-540 V3'),
        (4, 'Nicolas Ivanoff', '1968-05-19', 35, 'EDGE-540 V2');
 
+
 INSERT INTO roles (id, team_role)
 VALUES (1, 'technician'),
        (2, 'team manager'),
