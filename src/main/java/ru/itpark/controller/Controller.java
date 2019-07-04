@@ -39,15 +39,44 @@ public class Controller {
 //        return "team";
 //    }
 
-    @GetMapping("/team/{id}")
-    public String teamDetails(@PathVariable int id, Model model) {
+    @GetMapping("/teamMS")
+    public String teamMS(Model model) {
         //var team = teamService.findByPilotesId(id);
-        model.addAttribute("pilot", service.findById(id));
-        model.addAttribute("team", teamService.findAll());
+        // model.addAttribute("pilot", service.findById(id));
+        model.addAttribute("teamMS", teamService.findMSTeam());
 //TODO реализовать вывод списка команды на страницу team
-        return "team";
+        return "teamMS";
 
     }
+
+    @GetMapping("/teamYM")
+    public String teamYM(Model model) {
+        model.addAttribute("teamYM", teamService.findYMTeam());
+        return "teamYM";
+    }
+
+    @GetMapping("/teamPL")
+    public String teamPL(Model model) {
+        model.addAttribute("teamPL", teamService.findPLTeam());
+        return "teamPL";
+    }
+    @GetMapping("/teamNI")
+    public String teamNI(Model model) {
+        model.addAttribute("teamNI", teamService.findNITeam());
+        return "teamNI";
+    }
+//    @GetMapping("/teamdetails") // http://localhost:8080/add
+//    public String addTeamDetails() {
+//        return "teamdetails";
+//    }
+
+//    @GetMapping("/{id}")
+//    public String teamdetails(Model model) {
+//        model.addAttribute("member", service.findMemberById(id));
+//        return "teamdetails";
+//    }
+
+
 //        @GetMapping("/team/{id}")
 //        public String addTeam ( @PathVariable int id, Model model){
 //            model.addAttribute("title", "Team List");

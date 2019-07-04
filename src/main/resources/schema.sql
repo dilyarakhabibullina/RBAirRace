@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS pilots
 DROP TABLE IF EXISTS roles;
 CREATE TABLE IF NOT EXISTS roles
 (
-    id        INTEGER PRIMARY KEY AUTO_INCREMENT,
-    team_role VARCHAR(255) NOT NULL
+    id1  INTEGER PRIMARY KEY AUTO_INCREMENT,
+    team_role VARCHAR(255) UNIQUE NOT NULL
 
 );
 DROP TABLE IF EXISTS team;
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS team
     id           INTEGER PRIMARY KEY AUTO_INCREMENT,
     pilotes_id   INTEGER       NOT NULL REFERENCES pilots,
     member_name  VARCHAR(255)  NOT NULL,
-    roles_id     INTEGER       NOT NULL REFERENCES roles,
+    roles_id     INTEGER NOT NULL REFERENCES roles,
     time_in_team SMALLDATETIME NOT NULL
 );
 
@@ -49,3 +49,4 @@ CREATE TABLE IF NOT EXISTS authorities
     user_id   INTEGER      NOT NULL REFERENCES users,
     authority VARCHAR(255) NOT NULL
 );
+

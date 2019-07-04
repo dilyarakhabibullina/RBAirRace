@@ -4,8 +4,7 @@ package ru.itpark.service;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.itpark.domain.Pilot;
-import ru.itpark.domain.Team;
+import ru.itpark.domain.*;
 import ru.itpark.repository.TeamRepository;
 
 import java.util.List;
@@ -15,11 +14,24 @@ import java.util.List;
 public class TeamService {
 
     public final TeamRepository repository;
-    public List<Team> findAll() {
-        return repository.findAll();
+
+    public List<TeamMS> findMSTeam() {
+        return repository.findMSTeam();
     }
 
-    public Team findByPilotesId (int pilotes_id){
-        return repository.findByPilotesId(pilotes_id);
+    public List<TeamYM> findYMTeam() {
+        return repository.findYMTeam();
     }
+
+    public List<TeamPL> findPLTeam() {
+        return repository.findPLTeam();
+    }
+
+    public List<TeamNI> findNITeam() {
+    return repository.findNITeam();}
 }
+
+//    public List<Team> specifyTeam (){
+//        return repository.specifyTeam();
+//    }
+//}
