@@ -48,7 +48,7 @@ public class Controller {
 //        return "team";
 //    }
 
-    @GetMapping("/{id }/teamMS")
+    @GetMapping("/teamMS")
     public String teamMS(Model model) {
         //var team = teamService.findByPilotesId(id);
         // model.addAttribute("pilot", service.findById(id));
