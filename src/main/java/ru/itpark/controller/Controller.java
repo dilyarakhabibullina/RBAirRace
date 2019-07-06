@@ -24,15 +24,32 @@ public class Controller {
         return "pilotes";
     }
 
-    @GetMapping("/details") // http://localhost:8080/add
+    @GetMapping("/details")
     public String addPage() {
         return "details";
+    }
+
+    @GetMapping ("/edit")
+    public String addPilotesForEdit(Model model) {
+        model.addAttribute("title", "Pilot List");
+        model.addAttribute("pilotes", service.findAll());
+        return "edit";
     }
 
     @GetMapping("/{id}")
     public String details(@PathVariable int id, Model model) {
         model.addAttribute("pilot", service.findById(id));
         return "details";
+    }
+//    @GetMapping("/edit")
+//    public String addEditPage() {
+//        return "edit";
+//    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable int id, Model model) {
+        model.addAttribute("pilot", service.findById(id));
+        return "edit";
     }
 
     @GetMapping("/searchresult") // http://localhost:8080/add
