@@ -2,6 +2,8 @@ package ru.itpark.repository;
 
 
 import jdk.jfr.Registered;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -15,6 +17,7 @@ public class TeamRepository {
     private final JdbcTemplate jdbcTemplate;
     public Pilot pilot = new Pilot();
     public TeamMS teamMS = new TeamMS();
+    public Muroya muroya = new Muroya("murteam");
 
     public List<TeamMS> findMSTeam() {
 
@@ -31,6 +34,7 @@ public class TeamRepository {
                 )
         );
     }
+
     public List<TeamYM> findYMTeam() {
 
         return jdbcTemplate.query("SELECT id, pilotes_id, member_name, roles_id, time_in_team FROM team WHERE pilotes_id = 2",
@@ -43,6 +47,7 @@ public class TeamRepository {
                 )
         );
     }
+
     public List<TeamPL> findPLTeam() {
 
         return jdbcTemplate.query("SELECT id, pilotes_id, member_name, roles_id, time_in_team FROM team WHERE pilotes_id = 3",
@@ -55,6 +60,7 @@ public class TeamRepository {
                 )
         );
     }
+
     public List<TeamNI> findNITeam() {
 
         return jdbcTemplate.query("SELECT id, pilotes_id, member_name, roles_id, time_in_team FROM team WHERE pilotes_id = 4",
@@ -69,7 +75,6 @@ public class TeamRepository {
     }
 
 
-
 //    public List<Team> specifyTeam() {
 //        if (pilot.getId() != team.getPilotes_id()) {
 //
@@ -81,16 +86,15 @@ public class TeamRepository {
 
     public Team findByPilotesId(int id) {
         return jdbcTemplate.queryForObject("SELECT id, pilotes_id, member_name, roles_id, time_in_team FROM team WHERE pilotes_id = ?",
-                new Object[] {id},
+                new Object[]{id},
                 (rs, i) -> new Team(rs.getInt("id"),
                         rs.getInt("pilotes_id"),
                         rs.getString("member_name"),
                         rs.getInt("roles_id"),
                         rs.getDate("time_in_team")
                 )
-                );
+        );
     }
-
 
 }
 

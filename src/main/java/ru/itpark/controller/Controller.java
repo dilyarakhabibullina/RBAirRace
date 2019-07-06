@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.itpark.domain.Pilot;
 import ru.itpark.service.PilotsService;
 import ru.itpark.service.TeamService;
@@ -34,12 +35,20 @@ public class Controller {
         return "details";
     }
 
+    @GetMapping("/searchresult") // http://localhost:8080/add
+    public String searchingPage(@RequestParam String search, Model model) {
+        model.addAttribute("pilotes", service.searchByName(search));
+        model.addAttribute("search", search);
+        return "searchresult";
+    }
+
+
 //    @GetMapping("/team") // http://localhost:8080/add
 //    public String addTeamPage() {
 //        return "team";
 //    }
 
-    @GetMapping("/teamMS")
+    @GetMapping("/{id }/teamMS")
     public String teamMS(Model model) {
         //var team = teamService.findByPilotesId(id);
         // model.addAttribute("pilot", service.findById(id));

@@ -28,4 +28,22 @@ public class PilotsService {
         repository.save(pilot);
     }
 
+    public Pilot[] searchByName(String pilotname) {
+        Pilot[] result = new Pilot[10];
+        int resultIndex = 0;
+        Pilot[] pilots = repository.findAll().toArray(new Pilot[10]);
+        for (Pilot items : pilots) {
+            if (items == null) {
+                continue;
+            }
+            if (items.getPilotname().toLowerCase().contains(pilotname.toLowerCase())) {
+
+                result[resultIndex] = items;
+
+            }
+            resultIndex++;
+
+        }
+        return result;
+    }
 }

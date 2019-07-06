@@ -16,19 +16,37 @@
         <h3 class="row">Подробности:</h3>
         <h1>[[${pilot.getPilotname()}]]</h1>
 
-            <li class="list-group-item" data-th-each="pilot : ${pilotes}">
+        <li class="list-group-item" data-th-each="pilot : ${pilotes}">
 
-            <li class="list-group-item">Опыт: [[${pilot.getExperience()}]]</li>
-            <li class="list-group-item">День рождения: [[${pilot.getBirthdate()}]]</li>
-            <li class="list-group-item">Самолет: [[${pilot.getAircraft()}]]
-            </li>
-
-
+        <li class="list-group-item">Опыт: [[${pilot.getExperience()}]]</li>
+        <li class="list-group-item">День рождения: [[${pilot.getBirthdate()}]]</li>
+        <li class="list-group-item">Самолет: [[${pilot.getAircraft()}]]
+        </li>
 
 
     </div>
-    <a data-th-href="@{team/{id}(id=${pilot.getId()})}" class="btn btn-danger" >Команда-Pilotes TEAM</a>
 
+    <ul class="mt-3">
+
+
+        Цвет: [[${pilot.getId()}]]
+
+        <li class="list-group-item"
+            data-th-if="${pilot instanceOf T(ru.itpark.domain.Muroya)}">
+            имя команды[[${pilot.getTeamName()}]]
+        </li>
+
+    </ul>
+
+    <a class="btn btn-danger" data-th-if="${1}" data-th-href="@{1/teamMS}">
+        <!--       data-th-if="${pilot instanceOf T(ru.itpark.domain.Sonka)}">-->
+
+        Команда-Pilotes TEAM</a>
+
+    <a class="btn btn-danger">
+        <!--       data-th-if="${pilot instanceOf T(ru.itpark.domain.Sonka)}">-->
+
+        Команда-Pilotes TEAM</a>
 </div>
 
 
