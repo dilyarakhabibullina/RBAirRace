@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.itpark.domain.Pilot;
 import ru.itpark.repository.PilotsRepository;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -46,4 +47,11 @@ public class PilotsService {
         }
         return result;
     }
+
+    public void updateById(int id, String pilotname, Date birthdate, int experience, String aircraft) {
+        Pilot pilot = new Pilot(id, pilotname, birthdate, experience, aircraft);
+
+        repository.save(pilot);
+    }
+
 }

@@ -13,6 +13,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PilotsRepository {
     private final JdbcTemplate jdbcTemplate;
+    private Pilot[] items = new Pilot[10]; // 10 - null
+    private int nextIndex = 0;
+
+
 
     public List<Pilot> findAll() {
         return jdbcTemplate.query("SELECT id, pilotname, birthdate, experience, aircraft FROM pilots",
@@ -38,19 +42,35 @@ public class PilotsRepository {
     }
 
     public void removeById(int id) {
-        jdbcTemplate.update("DELETE FROM pilots WHERE id = ?",
-                id);
+      //  jdbcTemplate.update("DELETE FROM roles WHERE team.ROLES_ID =ROLES.ID1; DELETE FROM  team WHERE id=?",
+      //          id);
+
+        jdbcTemplate.update("DELETE FROM team WHERE pilotes_id=?", id);
+        jdbcTemplate.update("DELETE FROM pilots WHERE id=?", id);
     }
 
     public void save(Pilot pilot) {
         if (pilot.getId() == 0) {
             jdbcTemplate.update("INSERT INTO pilots (id, pilotname, birthdate, experience, aircraft)  VALUES (?,?,?,?,?)",
-                    pilot.getId(), pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft());
+                    pilot.getId(), pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft()
+            );
         } else {
-            jdbcTemplate.update("UPDATE pilots SET pilotname = ?, birthdate = ?, experience = ?, aircraft = ? WHERE id = ?", pilot.getId(), pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft());
+            jdbcTemplate.update("UPDATE pilots SET pilotname = ?, birthdate = ?, experience = ?, aircraft = ? WHERE id = ?",  pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft(), pilot.getId()
+            );
 
         }
 
     }
+//    public void update(Pilot pilot) {
+//        for (int i = 0; i < items.length; i++) {
+//            Pilot item = items[i];
+//            if (item != null && item.getId() == pilot.getId()) {
+//                items[i] = pilot;
+//            }
+//
+//        }
+//
+//    }
+
 }
 

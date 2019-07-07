@@ -2,13 +2,12 @@ package ru.itpark.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.itpark.domain.Pilot;
 import ru.itpark.service.PilotsService;
 import ru.itpark.service.TeamService;
+
+import java.sql.Date;
 
 @org.springframework.stereotype.Controller
 @RequestMapping("/")
@@ -45,11 +44,28 @@ public class Controller {
 //    public String addEditPage() {
 //        return "edit";
 //    }
+//@GetMapping("/editeach")
+//public String editEach() {
+//    return "editeach";
+//}
+
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable int id, Model model) {
         model.addAttribute("pilot", service.findById(id));
         return "edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String savePilot(
+            @PathVariable int id,
+            @RequestParam String pilotname,
+            @RequestParam Date birthdate,
+            @RequestParam int experience,
+            @RequestParam String aircraft
+    ) {
+        service.updateById(id, pilotname, birthdate, experience, aircraft);
+        return "redirect:/";
     }
 
     @GetMapping("/searchresult") // http://localhost:8080/add
@@ -58,7 +74,11 @@ public class Controller {
         model.addAttribute("search", search);
         return "searchresult";
     }
-
+    @PostMapping("/{id}/remove")
+    public String removeById(@PathVariable int id) {
+        service.removeById(id);
+        return "redirect:/"; // соглашение, spring делает redirect -> browser 302 редирект на /
+    }
 
 //    @GetMapping("/team") // http://localhost:8080/add
 //    public String addTeamPage() {

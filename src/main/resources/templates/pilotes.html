@@ -28,12 +28,20 @@
   <a data-th-href="@{/{id}(id=${pilot.getId()})}">
                         [[${pilot.getPilotname()}]]
                     </a>
+                    <form data-th-action="@{/{id}/remove(id=${pilot.getId()})}" method="post">
+                        <button class="btn btn-danger">Remove</button>
+                    </form>
+
                 </li>
             </ul>
-            <a data-th-href="@{/edit}" class="btn btn-primary mt-20">Edit</a>
+
+            <a data-th-href="@{/edit}" class="btn btn-primary mt-20">
+                Редактировать
+            </a>
 
 
-        </div>
+
+            </div>
     </div>
 </div>
 
