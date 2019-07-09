@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.domain.Pilot;
+import ru.itpark.domain.dto.PilotAdd;
 import ru.itpark.service.PilotsService;
 import ru.itpark.service.TeamService;
 
@@ -78,6 +79,22 @@ public class Controller {
     public String removeById(@PathVariable int id) {
         service.removeById(id);
         return "redirect:/"; // соглашение, spring делает redirect -> browser 302 редирект на /
+    }
+
+
+    @GetMapping("/pilot-add")
+    public String addPage(Model model) {
+        model.addAttribute("title", "New pilot");
+        return "pilot-add";
+    }
+
+    @PostMapping("/pilot-add")
+    public String add(@ModelAttribute PilotAdd dto) { // NoteAddForm -> name, content
+        // @ModelAttribute собирает объект Note из полей формы вместо того, чтобы для каждого параметра писать @RequestParam
+        // @RequestParam String name;
+        // @RequestParam String content;
+        service.add(dto);
+        return "redirect:/";
     }
 
 //    @GetMapping("/team") // http://localhost:8080/add
