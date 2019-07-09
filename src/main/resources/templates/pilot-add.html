@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head data-th-replace = "fragments/layout :: headFragment(title=${title})"></head>
+<body>
+
+<!-- div.container>div.row>div.col>ul.list-group>li.list-group-item -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Add New Pilot</h1>
+            <form data-th-action="@{/pilot-add}" method="post">
+                <input class="form-group" id="pilotname" type="text" name="pilotname"
+                       placeholder="Наименование">
+
+                <input class="form-group" id="birthdate" type="text" name="birthdate"
+                       placeholder="Дата рождения">
+
+                <input class="form-group" id="experience" type="text" name="experience"
+                       placeholder="стаж">
+
+                <input class="form-group" id="aircraft" type="text" name="aircraft" placeholder="модель самолета">
+
+
+                <button>Добавить</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
