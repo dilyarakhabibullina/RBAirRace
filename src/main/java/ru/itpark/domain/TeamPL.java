@@ -14,5 +14,7 @@ public class TeamPL {
     private int pilotes_id;
     private String memberName;
     private int rolesId;
+    private int id1;
+    private String role;
     private Date timeInTeam;
 }

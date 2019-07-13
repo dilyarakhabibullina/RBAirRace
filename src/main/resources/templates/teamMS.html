@@ -11,14 +11,9 @@
 
     <ul class="list-group">
         <li class="list-group-item" data-th-each="teamMS : ${teamMS}">
-            <!--            data-th-if="${pilot instanceOf T(ru.itpark.domain.Pilot)}"-->
-
-            <!--            <a data-th-href="@{/{id}(id=${teamMS.getId()})}">-->
-        <p> <h4>[[${teamMS.getMemberName()}]] </h4></p>
-        <p>In the team from [[${teamMS.getTimeInTeam()}]]</p>
-        <p>as a [[${teamMS.getRole()}]]</p>
-        <!--        </a>-->
-
+            <p> <h4>[[${teamMS.getMemberName()}]] </h4></p>
+            <p>In the team from [[${teamMS.getTimeInTeam()}]]</p>
+            <p>as a [[${teamMS.getRole()}]]</p>
         </li>
     </ul>
 

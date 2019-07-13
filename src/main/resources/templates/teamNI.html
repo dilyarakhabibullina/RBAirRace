@@ -1,29 +1,24 @@
 <!doctype html>
 <html lang="en">
-<head data-th-replace = "fragments/layout :: headFragment(title=${title})">
-
-
+<head data-th-replace="fragments/layout :: headFragment(title=${title})">
 
 
 </head>
 <body>
 <div class="container">
     <h1>СОСТАВ КОМАНДЫ</h1>
-<h1>Николас Иванофф</h1>
+    <h1>Николас Иванофф</h1>
 
     <ul class="list-group">
         <li class="list-group-item" data-th-each="teamNI : ${teamNI}">
-<!--            data-th-if="${pilot instanceOf T(ru.itpark.domain.Pilot)}"-->
-
-            <a data-th-href="@{/{id}(id=${teamNI.getMemberName()})}">
-                [[${teamNI.getMemberName()}]]
-            </a>
+            <p> <h4>[[${teamNI.getMemberName()}]] </h4></p>
+            <p>In the team from [[${teamNI.getTimeInTeam()}]]</p>
+            <p>as a [[${teamNI.getRole()}]]</p>
         </li>
     </ul>
 
 
 </div>
-
 
 
 </body>

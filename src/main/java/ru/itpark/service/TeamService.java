@@ -31,7 +31,4 @@ public class TeamService {
     return repository.findNITeam();}
 }
 
-//    public List<Team> specifyTeam (){
-//        return repository.specifyTeam();
-//    }
-//}
+

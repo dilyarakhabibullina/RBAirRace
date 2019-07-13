@@ -13,9 +13,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PilotsRepository {
     private final JdbcTemplate jdbcTemplate;
-    private Pilot[] items = new Pilot[10]; // 10 - null
+    private Pilot[] items = new Pilot[10];
     private int nextIndex = 0;
-
 
 
     public List<Pilot> findAll() {
@@ -35,16 +34,13 @@ public class PilotsRepository {
                 (rs, i) -> new Pilot(
                         rs.getInt("id"),
                         rs.getString("pilotname"),
-                        rs.getDate ("birthdate"),
+                        rs.getDate("birthdate"),
                         rs.getInt("experience"),
                         rs.getString("aircraft")
                 ));
     }
 
     public void removeById(int id) {
-      //  jdbcTemplate.update("DELETE FROM roles WHERE team.ROLES_ID =ROLES.ID1; DELETE FROM  team WHERE id=?",
-      //          id);
-
         jdbcTemplate.update("DELETE FROM team WHERE pilotes_id=?", id);
         jdbcTemplate.update("DELETE FROM pilots WHERE id=?", id);
     }
@@ -55,22 +51,11 @@ public class PilotsRepository {
                     pilot.getId(), pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft()
             );
         } else {
-            jdbcTemplate.update("UPDATE pilots SET pilotname = ?, birthdate = ?, experience = ?, aircraft = ? WHERE id = ?",  pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft(), pilot.getId()
+            jdbcTemplate.update("UPDATE pilots SET pilotname = ?, birthdate = ?, experience = ?, aircraft = ? WHERE id = ?", pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft(), pilot.getId()
             );
 
         }
 
     }
-//    public void update(Pilot pilot) {
-//        for (int i = 0; i < items.length; i++) {
-//            Pilot item = items[i];
-//            if (item != null && item.getId() == pilot.getId()) {
-//                items[i] = pilot;
-//            }
-//
-//        }
-//
-//    }
-
 }
 

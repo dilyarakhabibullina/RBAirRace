@@ -55,7 +55,7 @@ public class PilotsService {
         repository.save(pilot);
     }
     public void add(PilotAdd dto) {
-        // TODO: fix author_id
+
         var pilot = new Pilot(0, dto.getPilotname(), dto.getBirthdate(), dto.getExperience(), dto.getAircraft());
         save(pilot);
     }
