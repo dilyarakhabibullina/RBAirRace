@@ -6,26 +6,26 @@
 </head>
 <body>
 
-    <h1>Изменить данные пилотов</h1>
+    <h1>Change pilot's data</h1>
     <div data-th-each="pilot : ${pilotes}" data-th-if="${pilot}">
     <form data-th-action="@{/edit/{id}(id=${pilot.getId()})}" method="post">
         <input class="form-control" id="pilotname" type="text" name="pilotname"
-               placeholder="Наименование"
+               placeholder="Name"
                data-th-value="${pilot.getPilotname()}">
 
         <input class="form-control" id="birthdate" type="text" name="birthdate"
-               placeholder="Дата рождения"
+               placeholder="Birthday"
                data-th-value="${pilot.getBirthdate()}">
 
         <input class="form-control" id="experience" type="text" name="experience"
-               placeholder="стаж"
+               placeholder="Experience"
                data-th-value="${pilot.getExperience()}">
 
-        <input class="form-control" id="aircraft" type="text" name="aircraft" placeholder="модель самолета"
+        <input class="form-control" id="aircraft" type="text" name="aircraft" placeholder="aircraft"
                data-th-value="${pilot.getAircraft()}">
 
 
-        <button>Сохранить</button>
+        <button>SAVE</button>
     </form>
 </div>
 

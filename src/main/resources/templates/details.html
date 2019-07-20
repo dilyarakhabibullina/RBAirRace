@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Детали</title>
+    <title>Details</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -13,14 +13,14 @@
 <div class="container">
     <div class="col">
 
-        <h3 class="row">Подробности:</h3>
+        <h3 class="row">Details:</h3>
         <h1>[[${pilot.getPilotname()}]]</h1>
 
         <li class="list-group-item" data-th-each="pilot : ${pilotes}">
 
-        <li class="list-group-item">Опыт: [[${pilot.getExperience()}]]</li>
-        <li class="list-group-item">День рождения: [[${pilot.getBirthdate()}]]</li>
-        <li class="list-group-item">Самолет: [[${pilot.getAircraft()}]]
+        <li class="list-group-item">Experience: [[${pilot.getExperience()}]]</li>
+        <li class="list-group-item">Birthday: [[${pilot.getBirthdate()}]]</li>
+        <li class="list-group-item">Aircraft: [[${pilot.getAircraft()}]]
         </li>
 
 

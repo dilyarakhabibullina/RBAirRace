@@ -5,28 +5,29 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Результат поиска</title>
+    <title>Search Result</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h3>Результат поиска: [[${result}]]</h3>
+<h3>Search Result: [[${result}]]</h3>
 <div class="row">
     <div class="col">
         <div class="card-deck">
-            <div class="card mt-3" data-th-each="pilot : ${pilotes}" data-th-if="${pilot}">
+            <div class="card" style="width: 18rem;" data-th-each="pilot : ${pilotes}" data-th-if="${pilot}">
 
-                <div class="card-header bg-danger text-center text-white">
+                <img src="king.jpg" class="card-img-top"  alt="Pilot's photo">
+
+                   <div class="card-header bg-danger text-center text-white">
                     <p class="text-white">
                         [[ ${pilot.getPilotname()} ]]
                     </p>
                 </div>
-
                     <a class="card-link text-center mt-3 mb-2" data-th-href="@{/{id}(id=${pilot.getId()})}">
-                        Узнай о нем больше...
+                        Learn more...
                     </a>
                 </ul>
-            </div>
+            </img>
         </div>
     </div>
 </div>

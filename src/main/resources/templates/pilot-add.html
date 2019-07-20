@@ -8,20 +8,21 @@
     <div class="row">
         <div class="col">
             <h1>Add New Pilot</h1>
-            <form data-th-action="@{/pilot-add}" method="post">
-                <input class="form-group" id="pilotname" type="text" name="pilotname"
-                       placeholder="Наименование">
+            <form class="mt-3 mb-6" data-th-action="@{/pilot-add}" method="post">
+               <div class="form-group">
+                <input class="form-control" id="pilotname" type="text" name="pilotname"
+                       placeholder="Name">
 
-                <input class="form-group" id="birthdate" type="text" name="birthdate"
-                       placeholder="Дата рождения">
+                <input class="form-control" id="birthdate" type="text" name="birthdate"
+                       placeholder="Birthday">
 
-                <input class="form-group" id="experience" type="text" name="experience"
-                       placeholder="стаж">
+                <input class="form-control" id="experience" type="text" name="experience"
+                       placeholder="Experience">
 
-                <input class="form-group" id="aircraft" type="text" name="aircraft" placeholder="модель самолета">
+                <input class="form-control" id="aircraft" type="text" name="aircraft" placeholder="Aircraft">
 
-
-                <button>Добавить</button>
+               </div>
+                <button class="btn btn-danger">ADD</button>
             </form>
         </div>
     </div>

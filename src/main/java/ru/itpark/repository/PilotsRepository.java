@@ -47,8 +47,8 @@ public class PilotsRepository {
 
     public void save(Pilot pilot) {
         if (pilot.getId() == 0) {
-            jdbcTemplate.update("INSERT INTO pilots (id, pilotname, birthdate, experience, aircraft)  VALUES (?,?,?,?,?)",
-                    pilot.getId(), pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft()
+            jdbcTemplate.update("INSERT INTO pilots (pilotname, birthdate, experience, aircraft)  VALUES (?,?,?,?)",
+                    pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft()
             );
         } else {
             jdbcTemplate.update("UPDATE pilots SET pilotname = ?, birthdate = ?, experience = ?, aircraft = ? WHERE id = ?", pilot.getPilotname(), pilot.getBirthdate(), pilot.getExperience(), pilot.getAircraft(), pilot.getId()
