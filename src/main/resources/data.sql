@@ -29,7 +29,6 @@ VALUES (1, 2, 'Morris', 1, '2005-08-09'),
 
 
 SELECT id, pilotes_id, member_name, time_in_team, TEAM_ROLE FROM  team, roles WHERE pilotes_id=1 AND team.ROLES_ID = ROLES.ID1;
-
-
+ ;
 
 

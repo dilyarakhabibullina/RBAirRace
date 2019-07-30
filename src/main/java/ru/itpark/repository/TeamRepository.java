@@ -1,9 +1,6 @@
 package ru.itpark.repository;
 
 
-import jdk.jfr.Registered;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,8 +13,7 @@ import java.util.*;
 public class TeamRepository {
     private final JdbcTemplate jdbcTemplate;
     public Pilot pilot = new Pilot();
-    public TeamMS teamMS = new TeamMS();
-    public Muroya muroya = new Muroya("murteam");
+
 
     public List<TeamMS> findMSTeam() {
 
@@ -82,13 +78,7 @@ public class TeamRepository {
     }
 
 
-//    public List<Team> specifyTeam() {
-//        if (pilot.getId() != team.getPilotes_id()) {
-//
-//            return specifyTeam();
-//        }
-//        return null;
-//    }
+
 
 
     public Team findByPilotesId(int id) {

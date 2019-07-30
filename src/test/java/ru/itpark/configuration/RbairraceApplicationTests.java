@@ -1,4 +1,4 @@
-package ru.itpark.rbairrace;
+package ru.itpark.configuration;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -3,10 +3,11 @@ package ru.itpark.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.itpark.domain.Pilot;
 import ru.itpark.domain.dto.PilotAdd;
+import ru.itpark.repository.UserRepository;
 import ru.itpark.service.PilotsService;
 import ru.itpark.service.TeamService;
+
 
 import java.sql.Date;
 
@@ -16,12 +17,19 @@ import java.sql.Date;
 public class Controller {
     private final PilotsService service;
     private final TeamService teamService;
+    private final UserRepository userRepository;
 
     @GetMapping
     public String addAll(Model model) {
         model.addAttribute("title", "Pilot List");
         model.addAttribute("pilotes", service.findAll());
+        model.addAttribute("user", userRepository.findAll());
         return "pilotes";
+    }
+
+    @GetMapping("/login")
+    public String addloginPage() {
+        return "login";
     }
 
     @GetMapping("/details")
@@ -29,7 +37,7 @@ public class Controller {
         return "details";
     }
 
-    @GetMapping ("/edit")
+    @GetMapping("/edit")
     public String addPilotesForEdit(Model model) {
         model.addAttribute("title", "Pilot List");
         model.addAttribute("pilotes", service.findAll());
@@ -69,16 +77,17 @@ public class Controller {
         return "redirect:/";
     }
 
-    @GetMapping("/searchresult") // http://localhost:8080/add
+    @GetMapping("/searchresult")
     public String searchingPage(@RequestParam String search, Model model) {
         model.addAttribute("pilotes", service.searchByName(search));
         model.addAttribute("search", search);
         return "searchresult";
     }
+
     @PostMapping("/{id}/remove")
     public String removeById(@PathVariable int id) {
         service.removeById(id);
-        return "redirect:/"; // соглашение, spring делает redirect -> browser 302 редирект на /
+        return "redirect:/";
     }
 
 
@@ -107,7 +116,7 @@ public class Controller {
         //var team = teamService.findByPilotesId(id);
         // model.addAttribute("pilot", service.findById(id));
         model.addAttribute("teamMS", teamService.findMSTeam());
-//TODO реализовать вывод списка команды на страницу team
+
         return "teamMS";
 
     }
@@ -123,39 +132,12 @@ public class Controller {
         model.addAttribute("teamPL", teamService.findPLTeam());
         return "teamPL";
     }
+
     @GetMapping("/teamNI")
     public String teamNI(Model model) {
         model.addAttribute("teamNI", teamService.findNITeam());
         return "teamNI";
     }
-//    @GetMapping("/teamdetails") // http://localhost:8080/add
-//    public String addTeamDetails() {
-//        return "teamdetails";
-//    }
 
-//    @GetMapping("/{id}")
-//    public String teamdetails(Model model) {
-//        model.addAttribute("member", service.findMemberById(id));
-//        return "teamdetails";
-//    }
-
-
-//        @GetMapping("/team/{id}")
-//        public String addTeam ( @PathVariable int id, Model model){
-//            model.addAttribute("title", "Team List");
-//        model.addAttribute("team", teamService.findByPilotesId(int pilotes_id));
-//            return "team";
-//        }
-
-//    @GetMapping("/team/{id}")
-//    public String addTeam(Model model, @PathVariable int id) {
-//        // var заменяется на тот тип, который возвращает service.findById
-//        // для локальных переменных, инициализируемых сразу
-//        // Note
-//        var team = teamService.findByPilotesId(id);
-//        model.addAttribute("team", team);
-//        return "team";
-//
-//    }
 }
 

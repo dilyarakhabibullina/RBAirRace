@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ru">
+<head data-th-replace="fragments/layout :: headFragment(title=${title})">
+</head>
+<body>
+<div data-th-if="error">
+    [[ ${error} ]]
+</div>
+<form data-th-action="@{/register}" method="post">
+    <div class="form-group">
+
+    <input name="username" placeholder="Login" required>
+    <input name="password" type="password" placeholder="Password" required>
+    <input name="confirm" type="password" placeholder="Confirm your password" required>
+    </div>
+    <button class="btn-danger">Register</button>
+</form>
+</body>
+</html>
